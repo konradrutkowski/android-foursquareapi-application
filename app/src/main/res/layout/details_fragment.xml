@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="true">
+    <konradrutkowski.com.tapapp.customviews.CustomScrollView
+        android:id="@+id/detailsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <ImageView
+        android:id="@+id/imageBig"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="220dp" />
+            <View style="@style/Divider"/>
+            <TextView
+                android:textAlignment="center"
+                android:id="@+id/placeNameText"
+                android:text="Name"
+                android:layout_width="match_parent"
+                android:textSize="30sp"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content" />
+            <View style="@style/Divider"/>
+            <TextView
+
+                android:text="Category"
+                android:textColor="@color/ColorFront"
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+    <TextView
+
+        android:id="@+id/categoryText"
+        android:text="Category"
+        android:layout_width="match_parent"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content" />
+            <View style="@style/Divider"/>
+            <TextView
+
+                android:text="Checkins"
+                android:textColor="@color/ColorFront"
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+    <TextView
+        android:text="Checkins"
+        android:id="@+id/chekinsText"
+        android:layout_width="match_parent"
+        android:textSize="20sp"
+
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content" />
+            <View style="@style/Divider"/>
+            <TextView
+
+                android:text="Distance"
+                android:textColor="@color/ColorFront"
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+    <TextView
+        android:text="Distance"
+        android:id="@+id/distanceText"
+        android:layout_width="match_parent"
+        android:textSize="20sp"
+
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content" />
+            <View style="@style/Divider"/>
+            <TextView
+
+                android:text="Addres"
+                android:textColor="@color/ColorFront"
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+    <TextView
+        android:text="Address"
+        android:id="@+id/addressText"
+        android:layout_width="match_parent"
+        android:textSize="20sp"
+
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content" />
+            <View style="@style/Divider"/>
+            <TextView
+
+                android:text="City"
+                android:textColor="@color/ColorFront"
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+    <TextView
+        android:text="City"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:id="@+id/cityText"
+        android:layout_width="match_parent"
+
+
+        android:layout_height="350dp" />
+            <View style="@style/Divider"/>
+        </LinearLayout>
+</konradrutkowski.com.tapapp.customviews.CustomScrollView>
+    <android.support.design.widget.FloatingActionButton
+
+        android:id="@+id/addToFav"
+        android:textSize="40sp"
+
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/ic_add_white_24dp"
+        app:backgroundTint="@color/ColorFront"
+        app:borderWidth="0dp"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,24 @@
+
+<resources>
+    <style name="AppTheme" parent="Base.AppTheme">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColorSecondary">@color/White</item>
+        <item name="actionMenuTextColor">@color/White</item>
+        <item name="colorPrimary">@color/ColorFront</item>
+        <item name="colorPrimaryDark">@color/ColorBack</item>
+        <item name="colorAccent">@color/ColorBack</item>
+        <item name="android:windowActionBarOverlay">true</item>
+
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+</resources>
