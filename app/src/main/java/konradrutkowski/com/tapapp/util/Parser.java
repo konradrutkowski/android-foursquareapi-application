@@ -8,12 +8,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import konradrutkowski.com.tapapp.fsquare.FSquarePlace;
+import konradrutkowski.com.tapapp.fsquare.Place;
 
 public class Parser {
-    public static ArrayList<FSquarePlace> parseFoursquare(final String response) {
+    public static ArrayList<Place> parseFoursquare(final String response) {
 
-        ArrayList<FSquarePlace> temp = new ArrayList<>();
+        ArrayList<Place> temp = new ArrayList<>();
         try {
 
 
@@ -25,7 +25,7 @@ public class Parser {
                     JSONArray jsonArray = jsonObject.getJSONObject("response").getJSONArray("venues");
                     Log.i("TRY", "TRY");
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        FSquarePlace poi = new FSquarePlace();
+                        Place poi = new Place();
                         if (jsonArray.getJSONObject(i).has("id")) {
                             Log.i("ID", jsonArray.getJSONObject(i).getString("id"));
                             poi.setID(jsonArray.getJSONObject(i).getString("id"));

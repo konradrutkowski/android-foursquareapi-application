@@ -8,14 +8,14 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import konradrutkowski.com.tapapp.fsquare.FSquareAdapter;
-import konradrutkowski.com.tapapp.fsquare.FSquarePlace;
+import konradrutkowski.com.tapapp.fsquare.PlacesAdapter;
+import konradrutkowski.com.tapapp.fsquare.Place;
 import konradrutkowski.com.tapapp.R;
 import konradrutkowski.com.tapapp.data.PlacesSQLiteHelper;
 import konradrutkowski.com.tapapp.fragments.PlacesListFragment;
 
 
-public class OfflineDataCollector extends AsyncTask<String, Void, FSquareAdapter> {
+public class OfflineDataCollector extends AsyncTask<String, Void, PlacesAdapter> {
 
     PlacesListFragment fragment;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -31,29 +31,29 @@ public class OfflineDataCollector extends AsyncTask<String, Void, FSquareAdapter
     }
 
     @Override
-    protected FSquareAdapter doInBackground(String... strings) {
+    protected PlacesAdapter doInBackground(String... strings) {
 
-        ArrayList<FSquarePlace> placeList;
+        ArrayList<Place> placeList;
         PlacesSQLiteHelper placesSQLiteHelper = new PlacesSQLiteHelper(fragment.getActivity().getApplicationContext());
-        placeList = placesSQLiteHelper.getAllFSquarePlaces();
-        return new FSquareAdapter(fragment.getActivity(), placeList);
+        placeList = placesSQLiteHelper.getALlPlaces();
+        return new PlacesAdapter(fragment.getActivity(), placeList);
     }
 
     @Override
-    protected void onPostExecute(final FSquareAdapter fSquareAdapter) {
+    protected void onPostExecute(final PlacesAdapter placesAdapter) {
 
         final ListView listView = (ListView) fragment.getActivity().findViewById(R.id.listView);
-        listView.setAdapter(fSquareAdapter);
+        listView.setAdapter(placesAdapter);
 
         swipeRefreshLayout.setRefreshing(false);
         listView.setOnItemClickListener((new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                fragment.showDetails(fSquareAdapter.getItem(i));
+                fragment.showDetails(placesAdapter.getItem(i));
             }
         }
         ));
-        super.onPostExecute(fSquareAdapter);
+        super.onPostExecute(placesAdapter);
     }
 }
 

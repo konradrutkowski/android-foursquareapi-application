@@ -14,8 +14,9 @@ import konradrutkowski.com.tapapp.R;
 import konradrutkowski.com.tapapp.activities.DetailsActivity;
 import konradrutkowski.com.tapapp.data.collectors.DataCollector;
 import konradrutkowski.com.tapapp.data.collectors.OfflineDataCollector;
-import konradrutkowski.com.tapapp.fsquare.FSquarePlace;
+import konradrutkowski.com.tapapp.fsquare.Place;
 import konradrutkowski.com.tapapp.online.NetworkConnection;
+import konradrutkowski.com.tapapp.online.RequestConfig;
 import konradrutkowski.com.tapapp.util.LocationTracker;
 
 
@@ -31,7 +32,6 @@ public class PlacesListFragment extends Fragment implements SwipeRefreshLayout.O
     }
 
     @Override
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.places_list_fragment, container, false);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
@@ -46,10 +46,10 @@ public class PlacesListFragment extends Fragment implements SwipeRefreshLayout.O
         return rootView;
     }
 
-    public void showDetails(FSquarePlace fSquarePlace){
+    public void showDetails(Place place){
         Intent detailsIntent = new Intent(getActivity(), DetailsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("fsquareObj", fSquarePlace);
+        bundle.putSerializable("fsquareObj", place);
         detailsIntent.putExtras(bundle);
             startActivity(detailsIntent);
         activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
@@ -62,9 +62,13 @@ public class PlacesListFragment extends Fragment implements SwipeRefreshLayout.O
 
     @Override
     public void onRefresh() {
-        if(locationTracker.canGetLocation()&& NetworkConnection.isConnectingToInternet(this.getActivity())) {
-        ///RequestConfig.latitude, RequestConfig.longtitude);// FAKELOC
-            DataCollector dataCollector = new DataCollector(this, swipeLayout, String.valueOf(locationTracker.getLatitude()), String.valueOf(locationTracker.getLongitude()));
+        if(locationTracker.canGetLocation() && NetworkConnection.isConnectingToInternet(this.getActivity())) {
+          // RequestConfig.latitude, RequestConfig.longtitude;// FAKELOC
+            DataCollector dataCollector = new DataCollector(this, swipeLayout,
+                    String.valueOf(RequestConfig.latitude), String.valueOf(RequestConfig.longtitude));
+
+            //  DataCollector dataCollector = new DataCollector(this, swipeLayout, String.valueOf(
+          //          locationTracker.getLatitude()), String.valueOf(locationTracker.getLongitude()));
             dataCollector.execute();
         }else{
             OfflineDataCollector offlineDataCollector = new OfflineDataCollector(this, swipeLayout);

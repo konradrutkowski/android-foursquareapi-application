@@ -6,21 +6,21 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
+
+import com.squareup.picasso.Picasso;
 
 import konradrutkowski.com.tapapp.customviews.CustomScrollView;
-import konradrutkowski.com.tapapp.fsquare.FSquarePlace;
+import konradrutkowski.com.tapapp.fsquare.Place;
 import konradrutkowski.com.tapapp.R;
 
-public class DetailsActivity extends ActionBarActivity {
+public class DetailsActivity extends AppCompatActivity {
 
     ActionBar actionBar;
     ColorDrawable newColor = null;
@@ -34,7 +34,7 @@ public class DetailsActivity extends ActionBarActivity {
         setContentView(R.layout.details_fragment);
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        FSquarePlace mFSquarePlace = (FSquarePlace) bundle.getSerializable("fsquareObj");
+        Place place = (Place) bundle.getSerializable("fsquareObj");
         actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -44,8 +44,8 @@ public class DetailsActivity extends ActionBarActivity {
             newColor.setAlpha(25);
             actionBar.setBackgroundDrawable(newColor);
             actionBar.setDisplayShowTitleEnabled(titleDisplay);
-            if (mFSquarePlace != null) {
-                actionBar.setTitle(mFSquarePlace.getName());
+            if (place != null) {
+                actionBar.setTitle(place.getName());
             }
         }
 
@@ -76,15 +76,11 @@ public class DetailsActivity extends ActionBarActivity {
                 }
             }
         });
-        initView(mFSquarePlace);
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(false).cacheOnDisk(true).build();
+        initView(place);
+
         ImageView imageView = (ImageView) findViewById(R.id.imageBig);
-        assert mFSquarePlace != null;
-        if (mFSquarePlace.getUrl() != null) {
-            imageLoader.displayImage(mFSquarePlace.getUrl(), imageView, options);
-        } else {
-            imageView.setVisibility(View.GONE);
+        if (place != null) {
+            Picasso.with(this).load(place.getUrl()).into(imageView);
         }
 
         final FloatingActionButton addToFavButton = (FloatingActionButton) findViewById(R.id.addToFav);
@@ -113,7 +109,7 @@ public class DetailsActivity extends ActionBarActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
 
-    private void initView(FSquarePlace mFSquarePlace) {
+    private void initView(Place mPlace) {
         TextView name = (TextView) findViewById(R.id.placeNameText);
         TextView category = (TextView) findViewById(R.id.categoryText);
         TextView distance = (TextView) findViewById(R.id.distanceText);
@@ -122,34 +118,34 @@ public class DetailsActivity extends ActionBarActivity {
         TextView address = (TextView) findViewById(R.id.addressText);
         //
 
-        if (mFSquarePlace.getName() != null) {
-            name.setText(mFSquarePlace.getName());
+        if (mPlace.getName() != null) {
+            name.setText(mPlace.getName());
         } else {
             name.setText("Not available");
         }
 
-        if (mFSquarePlace.getCategory() != null) {
-            category.setText(mFSquarePlace.getCategory());
+        if (mPlace.getCategory() != null) {
+            category.setText(mPlace.getCategory());
         } else {
             category.setText("Not available");
         }
-        if (mFSquarePlace.getDistance() != null) {
-            distance.setText(mFSquarePlace.getDistance() + " meters");
+        if (mPlace.getDistance() != null) {
+            distance.setText(mPlace.getDistance() + " meters");
         } else {
             distance.setText("Not available");
         }
-        if (mFSquarePlace.getCheckins() != null) {
-            checkins.setText(mFSquarePlace.getCheckins());
+        if (mPlace.getCheckins() != null) {
+            checkins.setText(mPlace.getCheckins());
         } else {
             checkins.setText("Not available");
         }
-        if (mFSquarePlace.getCity() != null) {
-            city.setText(mFSquarePlace.getCity());
+        if (mPlace.getCity() != null) {
+            city.setText(mPlace.getCity());
         } else {
             city.setText("Not available");
         }
-        if (mFSquarePlace.getAddress() != null) {
-            address.setText(mFSquarePlace.getAddress());
+        if (mPlace.getAddress() != null) {
+            address.setText(mPlace.getAddress());
         } else {
             address.setText("Not available");
         }
