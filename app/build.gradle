@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each {
+        it.buildConfigField 'String', 'CLIENT_ID', CLIENT_ID
+        it.buildConfigField 'String', 'CLIENT_SECRET', CLIENT_SECRET
+    }
 }
 
 dependencies {

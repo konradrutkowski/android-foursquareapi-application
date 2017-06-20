@@ -1,4 +1,4 @@
-package konradrutkowski.com.tapapp.fsquare;
+package konradrutkowski.com.tapapp.places.model;
 
 import java.io.Serializable;
 

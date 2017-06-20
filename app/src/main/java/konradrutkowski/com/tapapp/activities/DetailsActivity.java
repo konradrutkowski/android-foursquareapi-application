@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import konradrutkowski.com.tapapp.customviews.CustomScrollView;
-import konradrutkowski.com.tapapp.fsquare.Place;
+import konradrutkowski.com.tapapp.places.model.Place;
 import konradrutkowski.com.tapapp.R;
 
 public class DetailsActivity extends AppCompatActivity {

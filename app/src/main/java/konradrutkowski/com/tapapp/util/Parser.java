@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import konradrutkowski.com.tapapp.fsquare.Place;
+import konradrutkowski.com.tapapp.places.model.Place;
 
 public class Parser {
     public static ArrayList<Place> parseFoursquare(final String response) {

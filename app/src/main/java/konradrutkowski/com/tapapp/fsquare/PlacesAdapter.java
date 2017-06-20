@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import konradrutkowski.com.tapapp.R;
+import konradrutkowski.com.tapapp.places.model.Place;
 
 
 public class PlacesAdapter extends ArrayAdapter<Place> {

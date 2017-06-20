@@ -9,10 +9,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import konradrutkowski.com.tapapp.fsquare.PlacesAdapter;
-import konradrutkowski.com.tapapp.fsquare.Place;
+import konradrutkowski.com.tapapp.places.model.Place;
 import konradrutkowski.com.tapapp.R;
 import konradrutkowski.com.tapapp.data.PlacesSQLiteHelper;
-import konradrutkowski.com.tapapp.fragments.PlacesListFragment;
+import konradrutkowski.com.tapapp.places.view.PlacesListFragment;
 import konradrutkowski.com.tapapp.online.ResponseRequestTask;
 import konradrutkowski.com.tapapp.util.Parser;
 
