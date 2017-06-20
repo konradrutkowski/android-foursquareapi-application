@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 
 
 public class NetworkConnection extends Thread {
+
     public static boolean isConnectingToInternet(Context ctx) {
 
         ConnectivityManager cm =

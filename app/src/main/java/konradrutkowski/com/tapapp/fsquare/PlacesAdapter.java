@@ -8,29 +8,27 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import konradrutkowski.com.tapapp.R;
+import konradrutkowski.com.tapapp.places.model.Place;
 
 
-public class FSquareAdapter extends ArrayAdapter<FSquarePlace> {
+public class PlacesAdapter extends ArrayAdapter<Place> {
 
 
-    public FSquareAdapter(Context context, ArrayList<FSquarePlace> listArray) {
+    public PlacesAdapter(Context context, ArrayList<Place> listArray) {
         super(context, 0, listArray);
     }
 
     @Override
     public View getView(int index, View view, final ViewGroup parent) {
 
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(false).showImageOnFail(R.mipmap.ic_launcher).cacheOnDisk(true).build();
         View vi = view;
         ViewHolder viewHolder = new ViewHolder();
-        FSquarePlace actualFSquare = getItem(index);
+        Place actualFSquare = getItem(index);
 
         if (vi == null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -43,11 +41,10 @@ public class FSquareAdapter extends ArrayAdapter<FSquarePlace> {
             viewHolder = (ViewHolder) vi.getTag();
         }
 
-        viewHolder.title.setText(actualFSquare.getName());
-        viewHolder.category.setText(actualFSquare.getCategory());
-
-        if (actualFSquare.getUrl() != null && viewHolder.icon != null) {
-            imageLoader.displayImage(actualFSquare.getUrl(), viewHolder.icon, options);
+        if (actualFSquare != null) {
+            viewHolder.title.setText(actualFSquare.getName());
+            viewHolder.category.setText(actualFSquare.getCategory());
+            Picasso.with(getContext()).load(actualFSquare.getUrl()).into(viewHolder.icon);
         }
         return vi;
     }

@@ -1,8 +1,8 @@
-package konradrutkowski.com.tapapp.fsquare;
+package konradrutkowski.com.tapapp.places.model;
 
 import java.io.Serializable;
 
-public class FSquarePlace implements Serializable {
+public class Place implements Serializable {
 
     private String url;
     private String ID;
@@ -12,6 +12,7 @@ public class FSquarePlace implements Serializable {
     private String checkins;
     private String distance;
     private String address;
+    private long dbID;
 
     public long getDbID() {
         return dbID;
@@ -21,9 +22,6 @@ public class FSquarePlace implements Serializable {
         this.dbID = dbID;
     }
 
-    private long dbID;
-
-    //GETTERS
     public String getUrl() {
         return url;
     }
@@ -57,7 +55,6 @@ public class FSquarePlace implements Serializable {
         return address;
     }
 
-    //SETTERS
     public void setUrl(String url) {
         this.url = url;
     }

@@ -1,5 +1,7 @@
 package konradrutkowski.com.tapapp.online;
 
+import android.util.Log;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -13,6 +15,7 @@ public class HTTPResponse {
 
 
     public static String getResponse(String url) {
+        Log.e("Request", "Url "+url);
         String replyString = null;
         HttpClient httpclient = new DefaultHttpClient();
 
