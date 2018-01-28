@@ -38,6 +38,8 @@
                 android:value="konradrutkowski.com.tapapp.activities.MainActivity" />
             </intent-filter>
         </activity>
+
+        <service android:name=".util.LocationTracker" />
     </application>
 
 </manifest>
