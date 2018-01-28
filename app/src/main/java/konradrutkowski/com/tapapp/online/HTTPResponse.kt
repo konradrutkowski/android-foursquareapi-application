@@ -21,9 +21,10 @@ object HTTPResponse {
 
             val bis = BufferedInputStream(`is`)
             val baf = ByteArrayBuffer(20)
-            var current: Int
-            while ((current = bis.read()) != -1) {
+            var current = 0
+            while (current != -1) {
                 baf.append(current.toByte().toInt())
+                current = bis.read()
             }
 
             replyString = String(baf.toByteArray())

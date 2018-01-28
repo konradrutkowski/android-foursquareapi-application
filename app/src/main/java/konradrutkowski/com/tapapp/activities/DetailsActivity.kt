@@ -30,18 +30,18 @@ class DetailsActivity : AppCompatActivity() {
         val bundle = intent.extras
         val mFSquarePlace = bundle!!.getSerializable("fsquareObj") as Place
         actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar!!.setDisplayHomeAsUpEnabled(true)
-            actionBar!!.setDisplayShowHomeEnabled(true)
-            actionBar!!.elevation = 0f
-            newColor = ColorDrawable(resources.getColor(R.color.ColorFront))
-            newColor!!.alpha = 25
-            actionBar!!.setBackgroundDrawable(newColor)
-            actionBar!!.setDisplayShowTitleEnabled(titleDisplay)
-
-
-            actionBar!!.title = mFSquarePlace.name
-        }
+//        if (actionBar != null) {
+//            actionBar!!.setDisplayHomeAsUpEnabled(true)
+//            actionBar!!.setDisplayShowHomeEnabled(true)
+//            actionBar!!.elevation = 0f
+//            newColor = ColorDrawable(resources.getColor(R.color.ColorFront))
+//            newColor!!.alpha = 25
+//            actionBar!!.setBackgroundDrawable(newColor)
+//            actionBar!!.setDisplayShowTitleEnabled(titleDisplay)
+//
+//
+//            actionBar!!.title = mFSquarePlace.name
+//        }
 
 
         val scrollView = findViewById<View>(R.id.detailsScrollView) as CustomScrollView
@@ -56,17 +56,20 @@ class DetailsActivity : AppCompatActivity() {
             private fun getAlphaforActionBar(scrollY: Int): Int {
                 val minDist = 10
                 val maxDist = 450
-                if (scrollY > maxDist) {
-                    titleDisplay = true
-                    return 255
-                } else if (scrollY < minDist) {
-                    titleDisplay = false
-                    return 10
-                } else {
-                    titleDisplay = false
-                    var alpha: Int
-                    alpha = (255.0 / maxDist * scrollY).toInt()
-                    return alpha
+                return when {
+                    scrollY > maxDist -> {
+                        titleDisplay = true
+                        255
+                    }
+                    scrollY < minDist -> {
+                        titleDisplay = false
+                        10
+                    }
+                    else -> {
+                        titleDisplay = false
+                        val alpha: Int = (255.0 / maxDist * scrollY).toInt()
+                        alpha
+                    }
                 }
             }
         })
@@ -84,12 +87,12 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 this.finish()
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -107,36 +110,24 @@ class DetailsActivity : AppCompatActivity() {
         val address = findViewById<View>(R.id.addressText) as TextView
         //
 
-        if (mPlace.name != null) {
-            name.text = mPlace.name
-        } else {
-            name.text = "Not available"
+        name.text = getOrDefault(mPlace.name)
+        category.text = getOrDefault(mPlace.category)
+        distance.text = buildDistance(mPlace)
+        checkins.text = getOrDefault(mPlace.checkins)
+        city.text = getOrDefault(mPlace.city)
+        address.text = getOrDefault(mPlace.address)
+
+    }
+
+    private fun getOrDefault(inString: String?): String = inString
+            ?: getString(R.string.not_available)
+
+    private fun buildDistance(place: Place): String {
+        if (!place.distance.isNullOrBlank()) {
+            getString(R.string.meters, place.distance)
         }
 
-        if (mPlace.category != null) {
-            category.text = mPlace.category
-        } else {
-            category.text = "Not available"
-        }
-        if (mPlace.distance != null) {
-            distance.text = mPlace.distance + " meters"
-        } else {
-            distance.text = "Not available"
-        }
-        if (mPlace.checkins != null) {
-            checkins.text = mPlace.checkins
-        } else {
-            checkins.text = "Not available"
-        }
-        if (mPlace.city != null) {
-            city.text = mPlace.city
-        } else {
-            city.text = "Not available"
-        }
-        if (mPlace.address != null) {
-            address.text = mPlace.address
-        } else {
-            address.text = "Not available"
-        }
+       return getString(R.string.not_available)
     }
+
 }

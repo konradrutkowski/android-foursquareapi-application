@@ -23,7 +23,7 @@ class PlacesSQLiteHelper(context: Context) : SQLiteOpenHelper(context, database_
             if (cursor.moveToFirst()) {
                 do {
                     place = Place()
-                    place.dbID = Integer.parseInt(cursor.getString(0))
+                    //place.dbID = Integer.parseInt(cursor.getString(0))
                     place.name = cursor.getString(1)
                     place.category = cursor.getString(2)
                     place.id = cursor.getString(3)

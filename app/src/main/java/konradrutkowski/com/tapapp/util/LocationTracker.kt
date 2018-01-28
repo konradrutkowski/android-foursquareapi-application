@@ -14,9 +14,8 @@ import android.widget.Toast
 /**
  * Created by Asus on 2015-10-17.
  */
-class LocationTracker(context: Context) : Service(), LocationListener {
+class LocationTracker(private var context: Context) : Service(), LocationListener {
 
-    private val mContext: Context
     internal var isGPSEnabled = false
     internal var isNetworkEnabled = false
     internal var canGetLocation = false
@@ -25,13 +24,11 @@ class LocationTracker(context: Context) : Service(), LocationListener {
     internal var longitude: Double = 0.toDouble()
     protected var locationManager: LocationManager? = null
 
-    init {
-        this.mContext = context
-    }
+
 
     fun getLocation(): Location? {
         try {
-            locationManager = mContext
+            locationManager = context
                     .getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
             // getting GPS status
@@ -54,7 +51,7 @@ class LocationTracker(context: Context) : Service(), LocationListener {
                                 MIN_TIME_BW_UPDATES,
                                 MIN_DISTANCE_CHANGE_FOR_UPDATES.toFloat(), this)
                     } catch (e: SecurityException) {
-                        Toast.makeText(activity, "Application connot work without location", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Application connot work without location", Toast.LENGTH_SHORT).show()
                     }
 
                     Log.d("Network", "Network")
@@ -63,7 +60,7 @@ class LocationTracker(context: Context) : Service(), LocationListener {
                             location = locationManager!!
                                     .getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
                         } catch (e: SecurityException) {
-                            Toast.makeText(activity, "Application connot work without location", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Application connot work without location", Toast.LENGTH_SHORT).show()
                         }
 
                         if (location != null) {
@@ -81,7 +78,7 @@ class LocationTracker(context: Context) : Service(), LocationListener {
                                     MIN_TIME_BW_UPDATES,
                                     MIN_DISTANCE_CHANGE_FOR_UPDATES.toFloat(), this)
                         } catch (e: SecurityException) {
-                            Toast.makeText(activity, "Application connot work without location", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Application connot work without location", Toast.LENGTH_SHORT).show()
                         }
 
                         Log.d("GPS Enabled", "GPS Enabled")
@@ -90,7 +87,7 @@ class LocationTracker(context: Context) : Service(), LocationListener {
                                 location = locationManager!!
                                         .getLastKnownLocation(LocationManager.GPS_PROVIDER)
                             } catch (e: SecurityException) {
-                                Toast.makeText(activity, "Application connot work without location", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Application connot work without location", Toast.LENGTH_SHORT).show()
                             }
 
                             if (location != null) {
@@ -114,7 +111,7 @@ class LocationTracker(context: Context) : Service(), LocationListener {
             try {
                 locationManager!!.removeUpdates(this@LocationTracker)
             } catch (e: SecurityException) {
-                Toast.makeText(activity, "Application connot work without location", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Application connot work without location", Toast.LENGTH_SHORT).show()
 
             }
 
