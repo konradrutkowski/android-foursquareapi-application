@@ -13,7 +13,8 @@ import android.widget.TextView
 import android.widget.Toast
 import konradrutkowski.com.tapapp.R
 import konradrutkowski.com.tapapp.customviews.CustomScrollView
-import konradrutkowski.com.tapapp.fsquare.Place
+import konradrutkowski.com.tapapp.places.Place
+import konradrutkowski.com.tapapp.places.PlacesFragment
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -28,7 +29,7 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(R.layout.details_fragment)
         val intent = this.intent
         val bundle = intent.extras
-        val mFSquarePlace = bundle!!.getSerializable("fsquareObj") as Place
+        val mFSquarePlace = bundle!!.getSerializable(PlacesFragment.FOURSQUARE_OBJECT_KEY) as Place
         actionBar = supportActionBar
 //        if (actionBar != null) {
 //            actionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -127,7 +128,7 @@ class DetailsActivity : AppCompatActivity() {
             getString(R.string.meters, place.distance)
         }
 
-       return getString(R.string.not_available)
+        return getString(R.string.not_available)
     }
 
 }

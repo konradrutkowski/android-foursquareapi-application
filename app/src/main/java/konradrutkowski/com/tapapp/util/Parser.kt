@@ -1,7 +1,7 @@
 package konradrutkowski.com.tapapp.util
 
 import android.util.Log
-import konradrutkowski.com.tapapp.fsquare.Place
+import konradrutkowski.com.tapapp.places.Place
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*

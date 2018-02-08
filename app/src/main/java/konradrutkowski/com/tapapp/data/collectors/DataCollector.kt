@@ -7,15 +7,15 @@ import android.widget.AdapterView
 import android.widget.ListView
 import konradrutkowski.com.tapapp.R
 import konradrutkowski.com.tapapp.data.PlacesSQLiteHelper
-import konradrutkowski.com.tapapp.fragments.PlacesListFragment
-import konradrutkowski.com.tapapp.fsquare.Place
-import konradrutkowski.com.tapapp.fsquare.PlacesAdapter
+import konradrutkowski.com.tapapp.places.PlacesFragment
+import konradrutkowski.com.tapapp.places.Place
+import konradrutkowski.com.tapapp.places.PlacesAdapter
 import konradrutkowski.com.tapapp.online.ResponseRequestTask
 import konradrutkowski.com.tapapp.util.Parser
 import java.util.*
 
 
-class DataCollector(var fragment: PlacesListFragment, private var swipeRefreshLayout: SwipeRefreshLayout, internal var latitude: String, internal var longitude: String) : AsyncTask<String, Void, PlacesAdapter>() {
+class DataCollector(var fragment: PlacesFragment, private var swipeRefreshLayout: SwipeRefreshLayout, internal var latitude: String, internal var longitude: String) : AsyncTask<String, Void, PlacesAdapter>() {
     internal var temp: String? = null
     lateinit var places: ArrayList<Place>
 

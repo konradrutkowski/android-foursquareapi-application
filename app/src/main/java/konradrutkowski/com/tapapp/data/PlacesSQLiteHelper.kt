@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import konradrutkowski.com.tapapp.fsquare.Place
+import konradrutkowski.com.tapapp.places.Place
 import java.util.*
 
 class PlacesSQLiteHelper(context: Context) : SQLiteOpenHelper(context, database_NAME, null, database_VERSION) {

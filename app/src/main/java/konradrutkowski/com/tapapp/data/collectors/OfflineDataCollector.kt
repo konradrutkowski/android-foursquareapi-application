@@ -7,13 +7,13 @@ import android.widget.AdapterView
 import android.widget.ListView
 import konradrutkowski.com.tapapp.R
 import konradrutkowski.com.tapapp.data.PlacesSQLiteHelper
-import konradrutkowski.com.tapapp.fragments.PlacesListFragment
-import konradrutkowski.com.tapapp.fsquare.Place
-import konradrutkowski.com.tapapp.fsquare.PlacesAdapter
+import konradrutkowski.com.tapapp.places.PlacesFragment
+import konradrutkowski.com.tapapp.places.Place
+import konradrutkowski.com.tapapp.places.PlacesAdapter
 import java.util.*
 
 
-class OfflineDataCollector(internal var fragment: PlacesListFragment, internal var swipeRefreshLayout: SwipeRefreshLayout) : AsyncTask<String, Void, PlacesAdapter>() {
+class OfflineDataCollector(internal var fragment: PlacesFragment, internal var swipeRefreshLayout: SwipeRefreshLayout) : AsyncTask<String, Void, PlacesAdapter>() {
 
     override fun onPreExecute() {
         super.onPreExecute()

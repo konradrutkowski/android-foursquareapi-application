@@ -1,11 +1,10 @@
-package konradrutkowski.com.tapapp.activities
+package konradrutkowski.com.tapapp.places
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import konradrutkowski.com.tapapp.R
-import konradrutkowski.com.tapapp.fragments.PlacesListFragment
 
-class MainActivity : AppCompatActivity() {
+class PlacesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initListPlacesFragment() {
         val transaction = fragmentManager.beginTransaction()
-        transaction.add(R.id.fragmentContainer, PlacesListFragment(), "LIST").commit()
+        transaction.add(R.id.fragmentContainer, PlacesFragment(), "LIST").commit()
     }
 }
 
