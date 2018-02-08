@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import konradrutkowski.com.tapapp.R
-import konradrutkowski.com.tapapp.activities.DetailsActivity
+import konradrutkowski.com.tapapp.placedetails.PlaceDetailsActivity
 import konradrutkowski.com.tapapp.data.collectors.DataCollector
 import konradrutkowski.com.tapapp.data.collectors.OfflineDataCollector
 import konradrutkowski.com.tapapp.online.NetworkConnection
@@ -41,7 +41,7 @@ class PlacesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         val bundle = Bundle()
         bundle.putParcelable(FOURSQUARE_OBJECT_KEY, place)
 
-        val detailsIntent = Intent(activity, DetailsActivity::class.java)
+        val detailsIntent = Intent(activity, PlaceDetailsActivity::class.java)
         detailsIntent.putExtras(bundle)
 
         startActivity(detailsIntent)

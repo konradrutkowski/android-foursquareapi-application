@@ -1,4 +1,4 @@
-package konradrutkowski.com.tapapp.activities
+package konradrutkowski.com.tapapp.placedetails
 
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.ColorDrawable
@@ -16,7 +16,7 @@ import konradrutkowski.com.tapapp.customviews.CustomScrollView
 import konradrutkowski.com.tapapp.places.Place
 import konradrutkowski.com.tapapp.places.PlacesFragment
 
-class DetailsActivity : AppCompatActivity() {
+class PlaceDetailsActivity : AppCompatActivity() {
 
     internal var actionBar: ActionBar? = null
     internal var newColor: ColorDrawable? = null

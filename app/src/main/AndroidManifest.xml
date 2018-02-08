@@ -25,7 +25,7 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".activities.DetailsActivity"
+        <activity android:name=".placedetails.PlaceDetailsActivity"
             android:parentActivityName=".places.PlacesActivity"
             >
             <intent-filter android:label="@string/app_name">

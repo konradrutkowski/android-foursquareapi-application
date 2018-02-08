@@ -36,6 +36,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.android.support:design:27.0.2'
+
+    //KOTLIN-RELATED
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.2'
     implementation "org.jetbrains.anko:anko:$anko_version"
@@ -51,6 +53,12 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding-design:2.1.0'
     implementation 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.1.0'
 
+    //RETROFIT
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+
+
+    //REALM
+    compile 'io.realm:realm-android:0.72.0'
 
 }
 repositories {

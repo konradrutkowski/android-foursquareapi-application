@@ -10,7 +10,6 @@ import android.widget.TextView
 import konradrutkowski.com.tapapp.R
 import java.util.*
 
-
 class PlacesAdapter(context: Context, listArray: ArrayList<Place>) : ArrayAdapter<Place>(context, 0, listArray) {
 
     override fun getView(index: Int, view: View?, parent: ViewGroup): View {
