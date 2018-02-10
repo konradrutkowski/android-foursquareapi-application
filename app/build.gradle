@@ -43,8 +43,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$anko_version"
 
     //RX
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.8'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.8'
 
     //RXBINDINGS
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.0'
@@ -59,6 +59,9 @@ dependencies {
 
     //REALM
     compile 'io.realm:realm-android:0.72.0'
+
+    //RETROFIT
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
 
 }
 repositories {
