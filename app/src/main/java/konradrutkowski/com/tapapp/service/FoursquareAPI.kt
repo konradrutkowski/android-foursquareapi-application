@@ -2,14 +2,19 @@ package konradrutkowski.com.tapapp.service
 
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.QueryMap
 
 
 interface FoursquareAPI {
 
-    @GET("users/{user}/repos")
-//    fun listRepos(@Path("user") user: String): Call<List<FoursquareAPI>>
+    @GET("$API_VERSION/$VENUES/$SEARCH")
+    fun listRepos(@QueryMap parameters: Map<String, String>): Call<List<FoursquareAPI>>
 
-    @GET("users/{user}/repos")
-  //  fun listRepos(@Path("user") user: String): Call<List<Repo>>
+
+
+    companion object {
+        const val API_VERSION = "v2"
+        const val VENUES = "venues"
+        const val SEARCH = "search"
+    }
 }

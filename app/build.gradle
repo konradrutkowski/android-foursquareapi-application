@@ -56,7 +56,6 @@ dependencies {
     //RETROFIT
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
 
-
     //REALM
     compile 'io.realm:realm-android:0.72.0'
 

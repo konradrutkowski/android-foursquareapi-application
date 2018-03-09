@@ -6,4 +6,8 @@ interface PlaceSource {
 
     fun loadPlace(placeId: String)
 
+    fun savePlaces()
+
+    fun savePlace()
+
 }

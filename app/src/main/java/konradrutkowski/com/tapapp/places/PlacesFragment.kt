@@ -38,8 +38,9 @@ class PlacesFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     fun showDetails(place: Place) {
-        val bundle = Bundle()
-        bundle.putParcelable(FOURSQUARE_OBJECT_KEY, place)
+        val bundle = Bundle().apply {
+            putParcelable(FOURSQUARE_OBJECT_KEY, place)
+        }
 
         val detailsIntent = Intent(activity, PlaceDetailsActivity::class.java)
         detailsIntent.putExtras(bundle)
