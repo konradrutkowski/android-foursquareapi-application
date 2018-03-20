@@ -1,8 +1,5 @@
 package konradrutkowski.com.tapapp.service
 
-import android.util.Log
-import io.reactivex.Completable
-import io.reactivex.Flowable
 import retrofit2.Retrofit
 
 
